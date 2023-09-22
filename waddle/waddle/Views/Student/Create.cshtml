@@ -10,14 +10,17 @@
     <div class="form-group">
         <label asp-for="StudentName"></label>
         <input asp-for="StudentName" class="form-control" />
+        <span asp-validation-for="StudentName" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="StudentEmail"></label>
         <input asp-for="StudentEmail" class="form-control" />
+        <span asp-validation-for="StudentEmail" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="StudentPhone"></label>
         <input asp-for="StudentPhone" class="form-control" />
+        <span asp-validation-for="StudentPhone" class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-primary">Create</button>
 </form>
