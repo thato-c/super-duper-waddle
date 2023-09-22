@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using waddle.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<ApplicationContext>(options => 
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationConnection"));
+});
 
 var app = builder.Build();
 
