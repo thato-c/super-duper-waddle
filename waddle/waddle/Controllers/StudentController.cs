@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using waddle.Data;
+using waddle.Models;
+using waddle.viewModels;
 
 namespace waddle.Controllers
 {
@@ -12,11 +14,26 @@ namespace waddle.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var students = _context.Students;
+
+            return View(students);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Student student)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Students.Add(student);
+                _context.SaveChanges();
+                return PartialView("_StudentRow", student);
+            }
 
+            return PartialView("_StudentForm", student);
+        }
     }
 }

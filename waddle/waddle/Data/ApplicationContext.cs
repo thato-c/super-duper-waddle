@@ -11,7 +11,7 @@ namespace waddle.Data
 
         public DbSet<Student> Students { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)  
         {
             modelBuilder.Entity<Student>().ToTable("Student");
         }

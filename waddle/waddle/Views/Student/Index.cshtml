@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<waddle.Models.Student>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>Model.StudentId</td>
+                <td>Model.StudentName</td>
+                <td>Model.StudentEmail</td>
+                <td>Model.StudentPhone</td>
+            </tr>
+        }
+    </tbody>
+    
+</table>
