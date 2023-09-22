@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using waddle.Data;
 using waddle.Models;
 using waddle.viewModels;
@@ -15,25 +16,32 @@ namespace waddle.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var students = _context.Students;
+            var students = await _context.Students.ToListAsync();
 
             return View(students);
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Student student)
+        public async Task<IActionResult> Create([Bind("StudentName, StudentEmail, StudentPhone")] Student student)
         {
             if (ModelState.IsValid)
             {
-                _context.Students.Add(student);
-                _context.SaveChanges();
-                return PartialView("_StudentRow", student);
+                // Save the student to the database
+                _context.Add(student);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
 
-            return PartialView("_StudentForm", student);
+            return View(student);
         }
+
     }
 }

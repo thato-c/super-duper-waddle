@@ -1,0 +1,23 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model waddle.Models.Student
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="StudentName"></label>
+        <input asp-for="StudentName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="StudentEmail"></label>
+        <input asp-for="StudentEmail" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="StudentPhone"></label>
+        <input asp-for="StudentPhone" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>

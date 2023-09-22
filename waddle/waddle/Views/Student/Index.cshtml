@@ -5,6 +5,9 @@
 }
 @model IEnumerable<waddle.Models.Student>
 
+<div>
+    <a asp-controller="Student" asp-action="Create" class="btn btn-primary">Create</a>
+</div>
 
 <table>
     <thead>
@@ -19,12 +22,11 @@
         @foreach (var student in Model)
         {
             <tr>
-                <td>Model.StudentId</td>
-                <td>Model.StudentName</td>
-                <td>Model.StudentEmail</td>
-                <td>Model.StudentPhone</td>
+                <td>@student.StudentId</td>
+                <td>@student.StudentName</td>
+                <td>@student.StudentEmail</td>
+                <td>@student.StudentPhone</td>
             </tr>
         }
     </tbody>
-    
 </table>
