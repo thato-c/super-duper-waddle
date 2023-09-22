@@ -5,9 +5,13 @@ name: .NET
 
 on:
   push:
-    branches: [ "main" ]
+    branches: 
+      - "main"
+      - "model-setup"
   pull_request:
-    branches: [ "main" ]
+    branches: 
+      - "main"
+      - "model-setup"
 
 jobs:
   build:
